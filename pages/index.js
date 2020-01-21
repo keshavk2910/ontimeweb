@@ -1,88 +1,51 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav'
+import Container from '@material-ui/core/Container';
+import './index.css';
+import {projects, services} from '../data';
+import ProjectHoverCon from '../components/ProjectHover/ProjectHover.container';
+import ServicesCon from '../components/Services/Services.container';
+import BlogCon from '../components/BlogSection/BlogSection.container';
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <Nav />
-
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
-
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
-    </div>
-
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
+const Home = ({posts}) => {
+  return (<>
+    <section id="home" className="main-section">
+      <div className="videodiv">
+  <div className="content-main"><h1>Ontime Web Services</h1>
+  <p>Perfectly crafted, creative and innovative Websites, Android and iPhone App Design, Development & Digital Marketing Solutions.</p></div>
   </div>
-)
-
+  </section>
+  <section className="section2" id="about-us">
+  <Container fixed>
+    <div className="section2_content">
+      <h2>We Do Web Development <br/> For Businesses Of All Sizes!</h2>
+      <p>Ontime Web Services is a web design company that specilizes in WordPress web development and maintenance. We offer both web design and development services. We are passionate about unique, creative and functional design for small, medium and large businesses. It doesn’t matter what size your business is – we want to hear your idea and would love the opportunity to offer our services to see it come to light.</p>
+      <p>We combine our technical and design oriented experience to offer a wide assortment of services in order to develop, integrate or revitalize your brand. Our experience within the industry allows us to develop a concise strategy to help your business grow. From the beginning of the project, we will work closely with you every step of the way in order to complete and establish your vision.</p>
+      <p>Web design and development is a constantly evolving and challenging industry. As a company, we make a point to adapt, learn and grow with changing technologies and best practices with design and development.</p>
+    </div>
+  </Container>
+  </section>
+  <div className="featured_title">
+      <h2>Services We Offer</h2>
+    </div>
+  <section id="services" className="services">
+    <Container fixed>
+  <ServicesCon services={services}/>
+  </Container>
+  </section>
+  <section id="work">
+    <div className="featured_title"><h2>Featured Projects</h2></div>
+  <ProjectHoverCon projects={projects} />
+  <div className="featured_end"></div>
+  </section>
+  <section id="section3"></section>
+  <div className="featured_end"></div>
+<section>
+  <BlogCon posts={posts}/>
+</section>
+    </>);
+}
+Home.getInitialProps = async function() {
+  const res = await fetch('https://backend.ontimewebservices.com/wp-json/wp/v2/posts?_embed');
+  const data = await res.json();
+  return {posts:data}
+};
 export default Home

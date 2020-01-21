@@ -1,0 +1,77 @@
+.services_list {
+    margin: 0 auto;
+}
+div.services_wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.singleService {
+flex: 0 33.33%;
+align-items: center;
+text-align: center;
+}
+.singleService a {
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 5px solid transparent;
+    display: block;
+    background: #FFF;
+    padding:0 30px 80px 30px;
+    border-radius: 20px;
+    transition-duration: 200ms;
+    box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    -webkit-box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    -moz-box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    margin:0 auto 50px auto;
+    width: 88%;
+    background-clip: padding-box; /* !importanté */
+    position: relative;
+} 
+.singleService a:hover {
+    box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+    -webkit-box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+    -moz-box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+}
+.singleService a:hover::before {
+    margin:0 0 -8px 0; /* !importanté */
+}
+.singleService a:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin:0 0 -5px 0; /* !importanté */
+    border-radius: inherit; /* !importanté */
+    background: -moz-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.singleService>img {
+    margin-bottom: 10px;
+}
+.services_list h4 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+.services_list p {
+    font-family: "Helvetica", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+    div.singleService {
+        flex: 0 100%;
+    }
+    .services {
+        padding: 100px 20px;
+    }
+  }

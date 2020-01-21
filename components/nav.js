@@ -1,56 +1,49 @@
-import React from 'react'
-import Link from 'next/link'
+import { slide as Menu } from 'react-burger-menu'
+import ActiveLink from './ActiveLink/ActiveLink';
+import {withRouter} from 'next/router';
+import './nav.css';
 
-const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
-].map(link => ({
-  ...link,
-  key: `nav-link-${link.href}-${link.label}`,
-}))
+const NAV = ({router}) => {
+  const items = [
+    {id:1, link:'/', label:'Home'},
+    {id:2, link:'/work', label:'Work'},
+    {id:4, link:'/about', label:'About'},
+    {id:5, link:'/contact', label:'Contact'},
+  ]
 
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-      {links.map(({ key, href, label }) => (
-        <li key={key}>
-          <a href={href}>{label}</a>
-        </li>
-      ))}
-    </ul>
+const handleLog = () => {
+  localStorage.removeItem('loggedIn');
+  localStorage.removeItem('token');
+  localStorage.removeItem('niceName');
+  router.push(`/login`,`/login`);
+}
+    return (
+    <div className="main-nav">
+    <ul className="menu-ul desktop-show">
+      {
+        items.map(item => 
+        <ActiveLink key={item.id} activeClassName="nav-active" href={item.link}>
+        <a><li>
+        <span>{item.label}</span>
+        </li></a>
+        </ActiveLink>)
+      }
+      </ul>
 
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
-  </nav>
-)
+    <div className="mobile-show">
+    <Menu right pageWrapId={ "main-wrap" } outerContainerId={ "outer-wrap" } width={ '50%' } >
+    {
+      items.map(item => 
+      <ActiveLink key={item.id} activeClassName="nav-active" href={item.link}>
+      <a className="menu-item">
+      <span>{item.label}</span>
+      </a>
+      </ActiveLink>)
+    }
+      </Menu>
+    </div>
+    </div>
+    );
+}
 
-export default Nav
+export default withRouter(NAV);

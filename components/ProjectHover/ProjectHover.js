@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
-import './projectHover.css'
 
 class ProjectHover extends Component {
     constructor(props) {

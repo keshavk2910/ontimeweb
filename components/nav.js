@@ -1,14 +1,15 @@
 import { slide as Menu } from 'react-burger-menu'
 import ActiveLink from './ActiveLink/ActiveLink';
 import {withRouter} from 'next/router';
-import './nav.css';
+import './nav.scss';
 
 const NAV = ({router}) => {
   const items = [
     {id:1, link:'/', label:'Home'},
     {id:2, link:'/work', label:'Work'},
     {id:4, link:'/about', label:'About'},
-    {id:5, link:'/contact', label:'Contact'},
+    {id:5, link:'/blog', label:'Blog'},
+    {id:6, link:'/contact', label:'Contact'},
   ]
 
 const handleLog = () => {

@@ -1,4 +1,5 @@
 import ProjectHover from './ProjectHover.js';
+import './projectHover.scss'
 
 const ProjectHoverCon = ({projects}) => {
     return (

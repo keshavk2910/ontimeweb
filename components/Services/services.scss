@@ -71,7 +71,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endCo
     div.singleService {
         flex: 0 100%;
     }
-    .services {
-        padding: 100px 20px;
+    .singleService a {
+        width: 100%;
     }
-  }
+}

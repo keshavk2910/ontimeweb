@@ -1,0 +1,98 @@
+.bdiv {
+width:200px;
+height:200px;
+}
+.blogSection_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.singleBlog {
+    flex: 0 33.33%;
+    align-items: center;
+    text-align: center;
+}
+div.blogwarp {
+    display: flex;
+    flex-wrap: wrap;
+}
+.blog_list {
+    margin: 0 auto;
+}
+.singleBlog a.single {
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 5px solid transparent;
+    display: block;
+    background: #FFF;
+    padding:0px 0px 40px 0px;
+    border-radius: 20px;
+    transition-duration: 200ms;
+    box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    -webkit-box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    -moz-box-shadow: 0 0 4px 0 rgba(35,49,66,0.1);
+    margin:0 auto 50px auto;
+    width: 95%;
+    background-clip: padding-box; /* !importanté */
+    position: relative;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+} 
+.singleBlog a:hover {
+    color: #000;
+    text-decoration: none;
+}
+.singleBlog a.single:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0 0 -5px 0;
+    border-radius: inherit;
+    background: -moz-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.singleBlog a:hover {
+    box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+    -webkit-box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+    -moz-box-shadow: 0 6px 14px 0 rgba(35,49,66,0.16);
+}
+.singleBlog a:hover::before {
+    margin:0 0 -8px 0; /* !importanté */
+}
+div.single-blogContent {
+    padding:10px;
+    font-family: "Helvetica", Arial, sans-serif;
+    font-size: 18px;
+}
+div.single-blogContent p {
+margin-bottom: 5px;
+}
+h4.single-blogTitle {
+    margin:10px 0 20px 0;
+    font-size: 25px;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+.single-featured_image {
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+@media (max-width: 768px) {
+    div.singleBlog {
+        flex: 0 100%;
+    }
+    .singleBlog a.single {
+        width: 100%;
+    }
+}

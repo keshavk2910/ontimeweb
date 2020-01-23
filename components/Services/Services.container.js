@@ -1,5 +1,5 @@
 import ServicesComp from './Services.component';
-import './services.css';
+import './services.scss';
 import { motion } from 'framer-motion';
 import { InView } from 'react-intersection-observer'
 
@@ -10,7 +10,7 @@ const ServicesCon = ({services}) => {
         <div className="services_list">
          <div className="services_wrap">
         {services.map((service, index) => 
-         <InView threshold="0.4" key={index} rootMargin="-80px 0px 0px 0px">
+         <InView triggerOnce={true} threshold="0.4" key={index} rootMargin="-80px 0px 0px 0px">
          {({ inView, ref }) => (
            <div ref={ref} className="singleService">
         <motion.div 
@@ -27,9 +27,6 @@ const ServicesCon = ({services}) => {
         duration: 1,
         ease: [0.43, 0.13, 0.23, 0.96],
       }}} 
-
-      whileHover={{ scale: 1.02 }} 
-
       exit={{ y: '50%', opacity: 0, transition:{
         duration: 1,
         ease: [0.43, 0.13, 0.23, 0.96],

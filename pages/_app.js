@@ -4,6 +4,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import { AnimatePresence } from 'framer-motion'
 import Layout from '../components/Layout';
+import {VerticleButton as ScrollUpButton} from "react-scroll-up-button";
 
 let cachedScrollPositions = [];
 
@@ -54,6 +55,12 @@ progress = () =>{
           >
             <Layout>
             <Component {...pageProps} key={router.route}/>
+            <ScrollUpButton
+      StopPosition={0}
+      ShowAtPosition={150}
+      EasingType='easeInOutCubic'
+      AnimationDuration={1000}
+    />
             </Layout>
           </AnimatePresence>
           </>

@@ -1,7 +1,7 @@
 import ServicesComp from './Services.component';
 import './services.scss';
 import { motion } from 'framer-motion';
-import { InView } from 'react-intersection-observer'
+import { InView } from 'react-intersection-observer';
 
 
 const ServicesCon = ({services}) => {

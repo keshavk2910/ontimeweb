@@ -1,11 +1,61 @@
 import Container from "@material-ui/core/Container";
 import Grid from '@material-ui/core/Grid';
+import { motion } from 'framer-motion';
+import { InView } from 'react-intersection-observer'
 import './footer.scss';
+import '../../styles/global.scss';
+
 const Footer = () => {
     return(
-        <footer id="footer">
-            <div className="postCard">
-                <h3 className="postCard_title">Need Web Solution?</h3>
+        <footer className="footerc" id="footer">
+            <InView triggerOnce={false} threshold="0.1" rootMargin="-100px 0px 0px 0px">
+         {({ inView, ref }) => (
+             <div ref={ref}>
+             <motion.div 
+             animate={inView ? {
+             opacity: 1,
+             y: '0%',
+             scale: 1,
+             transition: { 
+             duration: 0.8 }
+             }
+          : { y: '50%', opacity: 0,scale: 0.5, transition:{
+            duration: 1,
+            ease: [0.43, 0.13, 0.23, 0.96],
+          }}} 
+     
+          initial={{ y: '50%', opacity: 0,scale: 0.5, transition:{
+             duration: 1,
+             ease: [0.43, 0.13, 0.23, 0.96],
+           }}} 
+           exit={{ y: '50%', opacity: 0, transition:{
+             duration: 1,
+             ease: [0.43, 0.13, 0.23, 0.96],
+           } }} className="postCard">
+                <motion.h3 
+                animate={inView ? {
+                    opacity: 1,
+                    y: '0%',
+                    scale: 1,
+                    transition: { 
+                    duration: 0.5,
+                    delay:0.8 }
+                    }
+                 : { y: '-50%', opacity: 0,scale: 2, transition:{
+                    duration: 1,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                  }}} 
+            
+                 initial={{ y: '-50%', opacity: 0,scale: 2, transition:{
+                    duration: 1,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                  }}}
+                   
+                  exit={{ y: '-50%', opacity: 0,scale: 2, transition:{
+                    duration: 1,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                  } }}
+                className="postCard_title">Need Web Solution?</motion.h3>
             <Grid container spacing={3}>
             <Grid className="footer_left" item xs={12} sm={12} lg={6} xl={6}>
                 <div className="footer_left_wrap">
@@ -63,7 +113,10 @@ const Footer = () => {
             <img src="https://ik.imagekit.io/zkvrzayer06/tr:w-150,f-auto/coastal_frigatebird_agJbd1TLQ.png"/>
             <p>Postal Stamp</p>
             </div>
+            </motion.div>
             </div>
+            )}
+            </InView>
         </footer>
     );
 }

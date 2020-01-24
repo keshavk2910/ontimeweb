@@ -1,29 +1,62 @@
 import Container from "@material-ui/core/Container";
-import "./index.scss";
+import "../styles/index.scss";
 import { projects, services } from "../data";
-import ProjectHoverCon from "../components/ProjectHover/ProjectHover.container";
-import ServicesCon from "../components/Services/Services.container";
-import BlogCon from "../components/BlogSection/BlogSection.container";
-import AwesomeButton from "../components/AwesomeButton/AwesomeButton";
-import fetch from "isomorphic-unfetch";
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import dynamic from 'next/dynamic'
+import fetch from 'isomorphic-unfetch';
+import posts from '../posts.json';
+import { motion } from "framer-motion";
 
-const Home = ({ posts }) => {
+const AwesomeButton = dynamic(() => import('../components/AwesomeButton/AwesomeButton'));
+const BlogCon = dynamic(() => import("../components/BlogSection/BlogSection.container"));
+const AnchorLink = dynamic(() => import("react-anchor-link-smooth-scroll"));
+const ProjectHoverCon = dynamic(() => import("../components/ProjectHover/ProjectHover.container"));
+const ServicesCon = dynamic(() => import("../components/Services/Services.container"));
+
+const projectsLimit = projects.slice(0, 4).map(project => {
+  return project
+})
+
+const baseAnimation = {
+  exit: {
+    y: "50%",
+    opacity: 0,
+    transition: {
+      duration: 1,
+      ease: [0.43, 0.13, 0.23, 0.96]
+    }
+  },
+  enter: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      duration: 0.8
+    }
+  }
+};
+
+const Home = () => {
   return (
     <>
       <section id="home" className="main-section">
         <div className="videodiv">
-        <Container fixed>
-          <div className="content-main">
-            <h1>Ontime Web Services</h1>
-            <p>
-              Perfectly crafted, creative and innovative Websites, Android and
-              iPhone App Design, Development & Digital Marketing Solutions.
-            </p>
-            <AnchorLink offset='100' href='#work'>
-            <AwesomeButton text="Our Work" />
-            </AnchorLink>
-          </div>
+          <Container fixed>
+          <motion.div initial="exit" animate="enter" exit="exit">
+              <motion.div variants={baseAnimation} className="content-main">
+                <h1>Ontime Web Services</h1>
+              </motion.div>
+              <motion.div variants={baseAnimation} className="content-main">
+                <p>
+                  Perfectly crafted, creative and innovative Websites, Android
+                  and iPhone App Design, Development & Digital Marketing
+                  Solutions.
+                </p>
+              </motion.div>
+              <motion.div variants={baseAnimation} className="content-main">
+                <AnchorLink offset="100" href="#work">
+                  <AwesomeButton text="Our Work" />
+                </AnchorLink>
+              </motion.div>
+              </motion.div>
           </Container>
         </div>
       </section>
@@ -71,27 +104,20 @@ const Home = ({ posts }) => {
         <div className="featured_title">
           <h2>Featured Projects</h2>
         </div>
-        <ProjectHoverCon projects={projects} />
+        <ProjectHoverCon projects={projectsLimit} />
       </section>
       <div className="featured_title">
         <h2>Latest From Our Blog</h2>
       </div>
       <section id="blog">
         <Container fixed>
-          <BlogCon posts={posts} delay={true} />
+            <BlogCon posts={posts} delay={true} /> 
           <div className="allButton">
-          <AwesomeButton href="/blog" text="All Blogs" />
+            <AwesomeButton href="/blog" text="All Blogs" />
           </div>
         </Container>
       </section>
     </>
   );
-};
-Home.getInitialProps = async function() {
-  const res = await fetch(
-    "https://backend.ontimewebservices.com/wp-json/wp/v2/posts?_embed&per_page=6"
-  );
-  const data = await res.json();
-  return { posts: data };
 };
 export default Home;

@@ -4,20 +4,17 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import { AnimatePresence } from 'framer-motion'
 import Layout from '../components/Layout';
-import {VerticleButton as ScrollUpButton} from "react-scroll-up-button";
+import {CircleArrow  as ScrollUpButton} from "react-scroll-up-button";
 
 let cachedScrollPositions = [];
 
 Router.events.on('routeChangeStart', url => {
-  NProgress.configure({ easing: 'ease', speed: 600, minimum: 0.5 }).start()
+  NProgress.configure({ easing: 'ease', speed: 600, minimum: 0.4, showSpinner: false }).start()
 })
 Router.events.on('routeChangeComplete', () => NProgress.done(true))
 Router.events.on('routeChangeError', () => NProgress.done())
 
 class MyApp extends App {
-progress = () =>{
-  NProgress.start()
-}
     componentDidMount() {
         if ('scrollRestoration' in window.history) {
           window.history.scrollRestoration = 'manual';
@@ -58,7 +55,7 @@ progress = () =>{
             <ScrollUpButton
       StopPosition={0}
       ShowAtPosition={150}
-      EasingType='easeInOutCubic'
+      EasingType='easeOutCubic'
       AnimationDuration={1000}
     />
             </Layout>

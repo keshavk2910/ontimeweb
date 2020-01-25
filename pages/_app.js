@@ -2,7 +2,6 @@ import React from 'react'
 import App from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import { AnimatePresence } from 'framer-motion'
 import Layout from '../components/Layout';
 import {CircleArrow  as ScrollUpButton} from "react-scroll-up-button";
 
@@ -46,10 +45,6 @@ class MyApp extends App {
     render() {
         const {Component, pageProps, router } = this.props;
         return <>
-        <AnimatePresence
-            exitBeforeEnter
-            onExitComplete={this.handleExitComplete}
-          >
             <Layout>
             <Component {...pageProps} key={router.route}/>
             <ScrollUpButton
@@ -59,7 +54,6 @@ class MyApp extends App {
       AnimationDuration={1000}
     />
             </Layout>
-          </AnimatePresence>
           </>
       }
 }

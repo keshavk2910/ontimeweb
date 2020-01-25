@@ -1,6 +1,5 @@
 import {Component} from 'react'
 
-
 class ProgressiveImage extends Component {
     state = {
       currentImage: this.props.preview,

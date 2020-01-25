@@ -1,11 +1,10 @@
 import fetch from 'isomorphic-unfetch';
 import BlogCon from "../components/BlogSection/BlogSection.container";
 import Container from "@material-ui/core/Container";
-import '../styles/blog.scss';
 import {useState, useEffect} from 'react';
 import {withRouter} from 'next/router';
 import AwesomeButton from "../components/AwesomeButton/AwesomeButton";
-import { motion } from 'framer-motion';
+import { BlogTop, BlogSection } from '../styles/blogStyles';
 
 const Blog = ({posts, router, per_page, totalProducts}) => {
   const [per, setPer]= useState();
@@ -31,6 +30,7 @@ const Blog = ({posts, router, per_page, totalProducts}) => {
     }
   }, []);
 
+
   useEffect(() => {
     setLoading(false)
     if(posts.length>12 && changed) {
@@ -42,35 +42,19 @@ const Blog = ({posts, router, per_page, totalProducts}) => {
   }, [posts]);
 
     return(<>
-      <div className="blogTop">
-      <motion.div 
-        animate={{
-        opacity: 1,
-        y: '0%',
-        transition: { 
-        duration: 0.4}
-        }}
-
-     initial={{ y: '50%', opacity: 0, transition:{
-        duration: 1,
-        ease: [0.43, 0.13, 0.23, 0.96],
-      }}} 
-
-      exit={{ y: '50%', opacity: 0, transition:{
-        duration: 1,
-        ease: [0.43, 0.13, 0.23, 0.96],
-      } }} className="content">
+      <BlogTop bgimg="https://ik.imagekit.io/zkvrzayer06/tr:f-auto,q-50/corinne-kutz-tMI2_-r5Nfo-unsplash_7nJDMdJhw.jpg">
+      <div>
         <h1>Ontime Blog</h1>
-        </motion.div>
-    </div>
-    <section id="blogPage">
+        </div>
+    </BlogTop>
+    <BlogSection id="blogPage">
         <Container fixed>
-        <BlogCon posts={posts}/>
+        <BlogCon page="blog" posts={posts}/>
         {per_page<totalProducts ? <div id="loadMore"><AwesomeButton loading={loading} text="Load More" onClick={loadMore}/></div>
         : 
         <div id="loadMore"><div>No More Posts. Thats all for now :)</div></div>}
         </Container>
-        </section>
+        </BlogSection>
     </>);
 }
 Blog.getInitialProps = async function(context) {

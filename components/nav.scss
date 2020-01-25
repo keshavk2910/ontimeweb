@@ -97,15 +97,24 @@ span.formtext {
     -o-transition: all 0.25s;
     transition: all 0.25s;
     }
-    ul.desktop-show a:hover li {
-      color: #f7941e;
+    ul.desktop-show a li span {
+      transition: border-bottom 0.2s;
     }
+    ul.desktop-show a:hover li span {
+      border-bottom: 2px solid #fff;
+  }
     ul.desktop-show a.nav-active li span{
       color:#fff; 
       border-bottom:2px solid #fff;
     }
+    ul.desktop-show a.nav-active li {
+      transform: scale(1.1);
+    }
 header.header_sticky ul.desktop-show a.nav-active li span {
   color:#000;
+  border-bottom:2px solid #000;
+}
+header.header_sticky ul.desktop-show a:hover li span {
   border-bottom:2px solid #000;
 }
 header.header_sticky ul.desktop-show li {

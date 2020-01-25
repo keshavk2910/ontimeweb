@@ -1,50 +1,17 @@
-import { motion } from 'framer-motion';
-import '../styles/about.scss';
+import { AboutTop, AboutSection, AboutContent } from '../styles/aboutStyles';
 import Container from "@material-ui/core/Container";
 
 const About = () => {
     return (<>
-        <div className="aboutTop">
-      <motion.div 
-        animate={{
-        opacity: 1,
-        y: '0%',
-        transition: { 
-        duration: 0.4}
-        }}
-
-     initial={{ y: '50%', opacity: 0, transition:{
-        duration: 1,
-        ease: [0.43, 0.13, 0.23, 0.96],
-      }}} 
-
-      exit={{ y: '50%', opacity: 0, transition:{
-        duration: 1,
-        ease: [0.43, 0.13, 0.23, 0.96],
-      } }} className="content">
+        <AboutTop bgimg="https://ik.imagekit.io/zkvrzayer06/tr:f-auto,q-50/nastuh-abootalebi-yWwob8kwOCk-unsplash_P6jBPd4K0.jpg">
+      <div>
         <h1>About Us</h1>
-        </motion.div>
-    </div>
-        <motion.section
-        animate={{
-          opacity: 1,
-          y: '0%',
-          transition: { 
-          duration: 0.4}
-          }}
-  
-       initial={{ y: '50%', opacity: 0, transition:{
-          duration: 1,
-          ease: [0.43, 0.13, 0.23, 0.96],
-        }}} 
-  
-        exit={{ y: '50%', opacity: 0, transition:{
-          duration: 1,
-          ease: [0.43, 0.13, 0.23, 0.96],
-        } }} id="aboutPage">
-        <section className="section2" id="about-us">
+        </div>
+    </AboutTop>
+        <AboutSection id="aboutPage">
+        <AboutContent>
         <Container fixed>
-          <div className="section2_content">
+          <div>
             <h2>
               We Do Web Development <br /> For Businesses Of All Sizes!
             </h2>
@@ -73,8 +40,8 @@ const About = () => {
             </p>
           </div>
         </Container>
-      </section>
-        </motion.section>
+      </AboutContent>
+        </AboutSection>
     </>);
 }
 export default About;

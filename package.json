@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "scss-compile": "node-sass -rw components/ -o components/",
+    "deploy": "yarn build && gcloud app deploy"
   },
   "dependencies": {
     "@material-ui/core": "^4.8.3",
@@ -21,9 +23,9 @@
     "react-burger-menu": "^2.6.13",
     "react-dom": "16.12.0",
     "react-intersection-observer": "^8.25.2",
-    "react-scroll-up-button": "^1.6.4"
-  },
-  "devDependencies": {
-    "next-purgecss": "^3.1.2"
+    "react-lazyload": "^2.6.5",
+    "react-scroll-up-button": "^1.6.4",
+    "scss-compile": "^0.1.7",
+    "styled-components": "^5.0.0"
   }
 }

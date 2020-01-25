@@ -18,3 +18,35 @@ body {
   }
   }
 }
+.LogoSvg {
+  width:250px;
+  transition: all 0.4s ease-in-out;
+}
+.footerc .LogoSvg{
+  width:350px;
+}
+header.header_sticky .LogoSvg {
+  width:220px;
+}
+header.header_sticky .main-logo {
+  margin:5px;
+}
+header.header_sticky .turn, header.header_sticky .turn2 {
+display: none;
+}
+.featured_end {
+  height: 50px;
+  background: #833ab4;
+  background: -moz-linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  background: -webkit-linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  background: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1); 
+}
+.content-main .awesomeButton_div {
+  width: 250px;
+  margin-top: 30px;
+  .awesomeButton {
+    padding: 8px 40px;
+    font-size: 30px;
+  }
+}

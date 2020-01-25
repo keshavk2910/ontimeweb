@@ -1,8 +1,8 @@
 import Link from 'next/link';
-
-const Logo = ({sticky}) => {
+import ActualLogo from './ActualLogo'
+const Logo = () => {
     return <div className="logo-bg"><div className="main-logo">
-    <Link href='/'><a><img src={sticky ? "https://ik.imagekit.io/zkvrzayer06/tr:w-200,f-auto/logo_eLCgigxsk.png" : "https://ik.imagekit.io/zkvrzayer06/tr:w-200,f-auto/logo_eLCgigxsk.png"}/></a></Link>
+    <Link href='/'><a><ActualLogo/></a></Link>
     </div>
     <div className="turn"></div>
     <div className="turn2"></div>
@@ -34,7 +34,7 @@ const Logo = ({sticky}) => {
 
     }
     .main-logo {
-      margin:20px 10px;
+      margin:10px;
       -webkit-transition: all 0.25s;
     -moz-transition: all 0.25s;
     -o-transition: all 0.25s;
@@ -45,9 +45,8 @@ const Logo = ({sticky}) => {
         display: block; /* remove extra space below image */
     }
     @media (max-width: 968px) {
-        .main-logo {
-        padding: 10px;
-        margin:15px 10px;
+        .turn, .turn {
+            display:none;
         }
     }
     `}</style>
